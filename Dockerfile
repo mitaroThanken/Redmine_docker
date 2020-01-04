@@ -7,6 +7,8 @@ RUN apk add --no-cache \
     mv /usr/bin/iconv /usr/bin/iconv_orig && \
     ln -s /usr/bin/gnu-iconv /usr/bin/iconv
 
+RUN git clone -b redmine4.0 https://github.com/farend/redmine_theme_farend_bleuclair.git public/themes/bleuclair
+
 RUN mkdir -p /run/.secrets
 
 COPY .secrets/* /run/.secrets/
