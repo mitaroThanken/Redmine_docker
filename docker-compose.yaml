@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+    redmine:
+         build: .
+         ports:
+             - 8081:3000
+         environment:
+             REDMINE_DB_MYSQL_FILE: /run/.secrets/db_mysql
+             REDMINE_DB_PORT_FILE:  /run/.secrets/db_port
+             REDMINE_DB_USERNAME_FILE: /run/.secrets/db_username
+             REDMINE_DB_PASSWORD_FILE: /run/.secrets/db_password
+             REDMINE_DB_DATABASE_FILE: /run/.secrets/db_database
+             REDMINE_DB_ENCODING_FILE: /run/.secrets/db_encoding
+             REDMINE_PLUGINS_MIGRATE: "true"
+         volumes:
+             - ./files:/usr/src/redmine/files
+         restart: always
+
