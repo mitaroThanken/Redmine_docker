@@ -3,6 +3,13 @@ FROM redmine:4-alpine
 # タイムゾーン設定
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
+# ビルド関係
+RUN apk add --no-cache \
+            curl \
+            build-base \
+            gcc \
+            make
+
 # gnu-iconv を導入
 RUN apk add --no-cache \
             gnu-libiconv && \
@@ -28,4 +35,8 @@ RUN git clone -b 0.4.0 https://github.com/haru/redmine_theme_changer.git plugins
 
 # プラグイン「Wiki Extensions」を導入
 RUN git clone -b 0.9.0 https://github.com/haru/redmine_wiki_extensions.git plugins/redmine_wiki_extensions
+
+# プラグイン「DMSF Plugin」を導入
+# cf. https://github.com/danmunn/redmine_dmsf/issues/1065
+RUN git clone -b devel-2.4.2 https://github.com/danmunn/redmine_dmsf.git plugins/redmine_dmsf
 
