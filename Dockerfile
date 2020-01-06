@@ -26,3 +26,6 @@ RUN git clone -b redmine4.0 https://github.com/farend/redmine_theme_farend_bleuc
 # プラグイン「Theme Changer」を導入
 RUN git clone -b 0.4.0 https://github.com/haru/redmine_theme_changer.git plugins/redmine_theme_changer
 
+# プラグイン「Wiki Extensions」を導入
+RUN git clone -b 0.9.0 https://github.com/haru/redmine_wiki_extensions.git plugins/redmine_wiki_extensions
+
